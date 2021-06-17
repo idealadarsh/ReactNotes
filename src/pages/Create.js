@@ -37,7 +37,7 @@ export default function Create() {
 
     if(title && details) {
       const newNote = { id: Math.floor(Math.random() * 10000) + 1,title, details, category }
-      const newNotes = { ...notes, newNote }
+      const newNotes = [...notes, newNote]
       setNotes(newNotes)
       localStorage.setItem(db, JSON.stringify(newNotes))
     }
