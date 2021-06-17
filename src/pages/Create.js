@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { makeStyles, Container, Typography, Button, TextField, Radio, RadioGroup, FormControl, FormLabel, FormControlLabel } from '@material-ui/core/'
 import { KeyboardArrowRight } from '@material-ui/icons/'
 
@@ -14,6 +15,7 @@ export default function Create() {
 
   const db = 'ReactNotesDB'
   const classes = useStyles()
+  const history = useHistory()
   const [notes, setNotes] = useState([])
   const [title, setTitle] = useState('')
   const [details, setDetails] = useState('')
@@ -40,6 +42,7 @@ export default function Create() {
       const newNotes = [...notes, newNote]
       setNotes(newNotes)
       localStorage.setItem(db, JSON.stringify(newNotes))
+      history.push('/')
     }
   }
 
